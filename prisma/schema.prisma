@@ -1,0 +1,340 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Authentication Models
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model User {
+  id                String    @id @default(cuid())
+  name              String?
+  email             String    @unique
+  emailVerified     DateTime?
+  image             String?
+  password          String?
+  role              UserRole  @default(STUDENT)
+  onboardingComplete Boolean  @default(false)
+  
+  // Profile Information
+  bio               String?
+  phone             String?
+  dateOfBirth       DateTime?
+  location          String?
+  
+  // Timestamps
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  // Relations
+  accounts          Account[]
+  sessions          Session[]
+  enrollments       Enrollment[]
+  courseProgress    CourseProgress[]
+  assignments       Assignment[]
+  submissions       Submission[]
+  notifications     Notification[]
+  analytics         UserAnalytics[]
+
+  @@map("users")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// Course Management Models
+model Course {
+  id          String   @id @default(cuid())
+  title       String
+  description String?  @db.Text
+  thumbnail   String?
+  category    String
+  level       String   // Beginner, Intermediate, Advanced
+  duration    Int      // Duration in minutes
+  price       Float    @default(0)
+  published   Boolean  @default(false)
+  featured    Boolean  @default(false)
+  
+  // Course metadata
+  tags        String[]
+  objectives  String[]
+  
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  modules     Module[]
+  enrollments Enrollment[]
+  progress    CourseProgress[]
+  assignments Assignment[]
+
+  @@map("courses")
+}
+
+model Module {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  order       Int
+  courseId    String
+  
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  lessons     Lesson[]
+
+  @@map("modules")
+}
+
+model Lesson {
+  id          String     @id @default(cuid())
+  title       String
+  content     String?    @db.Text
+  videoUrl    String?
+  duration    Int?       // Duration in seconds
+  order       Int
+  type        LessonType @default(VIDEO)
+  moduleId    String
+  
+  // Timestamps
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // Relations
+  module      Module     @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  progress    LessonProgress[]
+
+  @@map("lessons")
+}
+
+// Progress Tracking Models
+model Enrollment {
+  id           String           @id @default(cuid())
+  userId       String
+  courseId     String
+  status       EnrollmentStatus @default(ACTIVE)
+  enrolledAt   DateTime         @default(now())
+  completedAt  DateTime?
+  
+  // Relations
+  user         User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course       Course           @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseId])
+  @@map("enrollments")
+}
+
+model CourseProgress {
+  id              String   @id @default(cuid())
+  userId          String
+  courseId        String
+  completedLessons Int     @default(0)
+  totalLessons    Int
+  progressPercent Float   @default(0)
+  lastAccessedAt  DateTime @default(now())
+  
+  // Relations
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course          Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseId])
+  @@map("course_progress")
+}
+
+model LessonProgress {
+  id          String   @id @default(cuid())
+  userId      String
+  lessonId    String
+  completed   Boolean  @default(false)
+  watchTime   Int      @default(0) // Time spent in seconds
+  completedAt DateTime?
+  
+  // Relations
+  lesson      Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, lessonId])
+  @@map("lesson_progress")
+}
+
+// Assignment and Assessment Models
+model Assignment {
+  id          String           @id @default(cuid())
+  title       String
+  description String           @db.Text
+  courseId    String
+  userId      String           // Creator
+  type        AssignmentType   @default(QUIZ)
+  maxScore    Int              @default(100)
+  dueDate     DateTime?
+  published   Boolean          @default(false)
+  
+  // Timestamps
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  // Relations
+  course      Course           @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  creator     User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  submissions Submission[]
+  questions   Question[]
+
+  @@map("assignments")
+}
+
+model Question {
+  id           String       @id @default(cuid())
+  assignmentId String
+  question     String       @db.Text
+  type         QuestionType @default(MULTIPLE_CHOICE)
+  options      String[]     // JSON array for multiple choice options
+  correctAnswer String
+  points       Int          @default(1)
+  order        Int
+  
+  // Relations
+  assignment   Assignment   @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+
+  @@map("questions")
+}
+
+model Submission {
+  id           String     @id @default(cuid())
+  userId       String
+  assignmentId String
+  answers      Json       // Store answers as JSON
+  score        Float?
+  submittedAt  DateTime   @default(now())
+  gradedAt     DateTime?
+  feedback     String?    @db.Text
+  
+  // Relations
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  assignment   Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, assignmentId])
+  @@map("submissions")
+}
+
+// Notification System
+model Notification {
+  id        String             @id @default(cuid())
+  userId    String
+  title     String
+  message   String             @db.Text
+  type      NotificationType   @default(INFO)
+  read      Boolean            @default(false)
+  data      Json?              // Additional data as JSON
+  createdAt DateTime           @default(now())
+  
+  // Relations
+  user      User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
+
+// Analytics Models
+model UserAnalytics {
+  id             String   @id @default(cuid())
+  userId         String
+  date           DateTime @default(now())
+  coursesViewed  Int      @default(0)
+  lessonsWatched Int      @default(0)
+  timeSpent      Int      @default(0) // Time in minutes
+  loginCount     Int      @default(0)
+  
+  // Relations
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, date])
+  @@map("user_analytics")
+}
+
+// Enums
+enum UserRole {
+  STUDENT
+  INSTRUCTOR
+  ADMIN
+}
+
+enum EnrollmentStatus {
+  ACTIVE
+  COMPLETED
+  CANCELLED
+  SUSPENDED
+}
+
+enum LessonType {
+  VIDEO
+  TEXT
+  QUIZ
+  INTERACTIVE
+}
+
+enum AssignmentType {
+  QUIZ
+  ESSAY
+  PROJECT
+  DISCUSSION
+}
+
+enum QuestionType {
+  MULTIPLE_CHOICE
+  TRUE_FALSE
+  SHORT_ANSWER
+  ESSAY
+}
+
+enum NotificationType {
+  INFO
+  WARNING
+  SUCCESS
+  ERROR
+  COURSE_UPDATE
+  ASSIGNMENT_DUE
+  GRADE_POSTED
+}
