@@ -1,4 +1,5 @@
-import NextImage, { ImageProps as NextImageProps } from 'next/image'
+import type { ImageProps as NextImageProps } from 'next/image'
+import NextImage from 'next/image'
 import { useEffect, useState } from 'react'
 
 const ERROR_IMG_SRC =

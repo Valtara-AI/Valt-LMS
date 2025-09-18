@@ -1,17 +1,17 @@
 import { motion } from 'framer-motion';
 import {
-    Award,
-    BookOpen,
-    ChevronRight,
-    Clock,
-    Globe,
-    Play,
-    Shield,
-    Star,
-    Target,
-    TrendingUp,
-    Users,
-    Zap
+  Award,
+  BookOpen,
+  ChevronRight,
+  Clock,
+  Globe,
+  Play,
+  Shield,
+  Star,
+  Target,
+  TrendingUp,
+  Users,
+  Zap
 } from 'lucide-react';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { Button } from '../components/ui/button';
@@ -333,7 +333,7 @@ export function LandingPage({ onGetStarted, onLogin, isDarkMode, onThemeToggle }
           >
             <h2 className="text-4xl font-bold mb-4">What Our Learners Say</h2>
                     <p className="text-xl text-muted-foreground">
-                      Join thousands of successful learners who\'ve transformed their careers
+                      Join thousands of successful learners who've transformed their careers
             </p>
           </motion.div>
 
