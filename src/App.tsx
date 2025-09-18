@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Toaster } from './components/ui/sonner';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { Analytics } from './components/Analytics';
+import { Dashboard } from './components/Dashboard';
 import { EnrollmentProvider } from './components/EnrollmentProvider';
-import { useTheme } from './components/useTheme';
+import { MyCourses } from './components/MyCourses';
+import { OnboardingModal } from './components/OnboardingModal';
+import { Profile } from './components/Profile';
+import { SettingsModal } from './components/SettingsModalUpdated';
 import { Sidebar } from './components/Sidebar';
 import { TopBar } from './components/TopBar';
-import { Dashboard } from './components/Dashboard';
-import { MyCourses } from './components/MyCourses';
-import { Analytics } from './components/Analytics';
-import { Profile } from './components/Profile';
-import { OnboardingModal } from './components/OnboardingModal';
-import { SettingsModal } from './components/SettingsModalUpdated';
-import { LandingPage } from './components/LandingPage';
+import { Toaster } from './components/ui/sonner';
+import { useTheme } from './components/useTheme';
+// Corrected path: LandingPage component lives under app directory, not components
+import { LandingPage } from './app/LandingPage';
 import { AuthPage } from './components/AuthPage';
 
 export default function App() {
