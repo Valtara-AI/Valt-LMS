@@ -78,7 +78,8 @@ export function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
     return "That's an interesting question! As your AI learning assistant, I'm here to help with course recommendations, study strategies, progress tracking, and learning optimization. Could you tell me more about what specific aspect of your learning journey you'd like to improve?";
   };
 
-  const handleSendMessage = async () => {
+  // Not marked async to avoid returning a Promise to callers (fixes no-misused-promises lint rule)
+  const handleSendMessage = () => {
     if (!newMessage.trim()) return;
 
     const userMessage: Message = {
@@ -108,7 +109,8 @@ export function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
 
   const handleQuickQuestion = (query: string) => {
     setNewMessage(query);
-    setTimeout(() => handleSendMessage(), 100);
+    // Ensure we explicitly ignore the return to satisfy lint, even though handleSendMessage returns void
+    setTimeout(() => { handleSendMessage(); }, 100);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

@@ -2,6 +2,7 @@
 
 import { CourseCard } from '@/components/CourseCard';
 import { CourseDetailModal } from '@/components/CourseDetailModal';
+import type { Course } from '@/components/EnrollmentProvider';
 import { useEnrollment } from '@/components/EnrollmentProvider';
 import { KPITile } from '@/components/KPITile';
 import { Button } from '@/components/ui/button';
@@ -9,20 +10,6 @@ import { motion } from 'framer-motion';
 import { Award, BookOpen, Clock, Lightbulb, Target, TrendingUp } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-
-type Course = {
-  title: string;
-  instructor: string;        
-  duration: string;
-  level: string;
-  status: string;
-  progress: number;
-  students?: number;
-  isRecommended?: boolean;
-  description?: string;
-  skills?: string[];
-  [key: string]: any;
-};
 
 export default function DashboardPage() {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
@@ -62,8 +49,7 @@ export default function DashboardPage() {
   ];
 
   const handleNavigate = (section: string) => {
-    // Use an any-cast to avoid complex RouteImpl typing in this helper
-    (router as any).push(`/${section}`);
+    router.push(`/${section}` as any);
   };
 
   return (
