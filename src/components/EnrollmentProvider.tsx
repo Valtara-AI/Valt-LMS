@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
-interface Course {
+export interface Course {
   title: string;
   instructor: string;
   duration: string;

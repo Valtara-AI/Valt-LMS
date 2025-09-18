@@ -63,6 +63,8 @@ const config = {
     "@typescript-eslint/no-floating-promises": "warn",
     "@typescript-eslint/consistent-indexed-object-style": "warn",
     "@typescript-eslint/no-empty-function": "warn",
+    "@typescript-eslint/no-unsafe-return": "warn",
+    "@typescript-eslint/no-redundant-type-constituents": "warn",
   },
 };
 
