@@ -2,18 +2,18 @@
 
 import { motion } from 'framer-motion';
 import {
-    Award,
-    BookOpen,
-    Brain,
-    ChevronRight,
-    Clock,
-    Globe,
-    Play,
-    Shield,
-    Star,
-    TrendingUp,
-    Users,
-    Zap
+  Award,
+  BookOpen,
+  Brain,
+  ChevronRight,
+  Clock,
+  Globe,
+  Play,
+  Shield,
+  Star,
+  TrendingUp,
+  Users,
+  Zap
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -27,7 +27,7 @@ interface LandingPageProps {
   onLogin: () => void;
 }
 
-export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
+function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
   const { isDarkMode, toggleTheme } = useTheme();
   const [selectedCategory, setSelectedCategory] = useState('All Courses');
   
