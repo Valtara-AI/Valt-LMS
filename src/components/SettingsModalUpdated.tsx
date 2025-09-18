@@ -1,24 +1,24 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-  Bell,
-  Calendar,
-  Clock,
-  Download,
-  FileText,
-  Globe,
-  HelpCircle,
-  Key,
-  LogOut,
-  Mail,
-  Monitor,
-  RefreshCw,
-  Save,
-  Shield,
-  Smartphone,
-  Trash2,
-  User,
-  Users,
-  X
+    Bell,
+    Calendar,
+    Clock,
+    Download,
+    FileText,
+    Globe,
+    HelpCircle,
+    Key,
+    LogOut,
+    Mail,
+    Monitor,
+    RefreshCw,
+    Save,
+    Shield,
+    Smartphone,
+    Trash2,
+    User,
+    Users,
+    X
 } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '../components/ui/button';
@@ -139,7 +139,7 @@ export function SettingsModal({ isOpen, onClose, isDarkMode, onThemeToggle, onLo
                         <Separator />
 
                         <div>
-                          <h3 className="text-lg font-semibold mb-4">Password & Security</h3>
+                          <h3 className="text-lg font-semibold mb-4">Password &amp; Security</h3>
                           <div className="space-y-4">
                             <Button 
                               variant="outline" 
@@ -367,7 +367,7 @@ export function SettingsModal({ isOpen, onClose, isDarkMode, onThemeToggle, onLo
                     <TabsContent value="privacy" className="p-6 m-0">
                       <div className="space-y-6">
                         <div>
-                          <h3 className="text-lg font-semibold mb-4">Data & Privacy</h3>
+                          <h3 className="text-lg font-semibold mb-4">Data &amp; Privacy</h3>
                           <div className="space-y-4">
                             <div className="flex items-center justify-between">
                               <div className="space-y-1">
@@ -444,7 +444,7 @@ export function SettingsModal({ isOpen, onClose, isDarkMode, onThemeToggle, onLo
                     <TabsContent value="data" className="p-6 m-0">
                       <div className="space-y-6">
                         <div>
-                          <h3 className="text-lg font-semibold mb-4">Import & Export</h3>
+                          <h3 className="text-lg font-semibold mb-4">Import &amp; Export</h3>
                           <div className="space-y-3">
                             <Button variant="outline" className="w-full justify-start">
                               <Download className="w-4 h-4 mr-2" />

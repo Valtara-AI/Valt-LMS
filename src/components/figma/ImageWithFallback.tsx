@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
 import NextImage, { ImageProps as NextImageProps } from 'next/image'
+import { useEffect, useState } from 'react'
 
 const ERROR_IMG_SRC =
   'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzLjciPjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjU2IiBoZWlnaHQ9IjU2IiByeD0iNiIvPjxwYXRoIGQ9Im0xNiA1OCAxNi0xOCAzMiAzMiIvPjxjaXJjbGUgY3g9IjUzIiBjeT0iMzUiIHI9IjciLz48L3N2Zz4KCg=='
@@ -42,7 +42,7 @@ export function ImageWithFallback({
   }
 
   // If width/height passed, render regular NextImage. Otherwise use fill mode with a sensible default height.
-  const hasDims = !!(rest as any).width && !!(rest as any).height
+  const hasDims = typeof (rest as NextImageProps).width === 'number' && typeof (rest as NextImageProps).height === 'number'
 
   return (
     <div className={`relative inline-block w-full ${className}`}>
@@ -55,7 +55,7 @@ export function ImageWithFallback({
       {hasDims ? (
         <NextImage
           {...(rest as NextImageProps)}
-          src={src as any}
+          src={src}
           alt={alt ?? ''}
           onError={onError}
           onLoadingComplete={onLoad}
@@ -65,7 +65,7 @@ export function ImageWithFallback({
         <div className="relative w-full h-56 sm:h-64 md:h-72">
           <NextImage
             {...(rest as NextImageProps)}
-            src={src as any}
+            src={src}
             alt={alt ?? ''}
             fill
             sizes="(max-width: 640px) 100vw, 50vw"

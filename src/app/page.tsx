@@ -2,18 +2,18 @@
 
 import { motion } from 'framer-motion';
 import {
-  Award,
-  BookOpen,
-  Brain,
-  ChevronRight,
-  Clock,
-  Globe,
-  Play,
-  Shield,
-  Star,
-  TrendingUp,
-  Users,
-  Zap
+    Award,
+    BookOpen,
+    Brain,
+    ChevronRight,
+    Clock,
+    Globe,
+    Play,
+    Shield,
+    Star,
+    TrendingUp,
+    Users,
+    Zap
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -728,7 +728,7 @@ export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
           >
             <h2 className="text-4xl font-bold mb-4 text-foreground">What Our Learners Say</h2>
             <p className="text-xl text-muted-foreground">
-              Join thousands of successful learners who've transformed their careers
+              Join thousands of successful learners who\'ve transformed their careers
             </p>
           </motion.div>
 

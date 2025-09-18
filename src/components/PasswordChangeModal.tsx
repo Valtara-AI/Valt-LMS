@@ -1,14 +1,14 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-  AlertCircle,
-  CheckCircle,
-  Eye,
-  EyeOff,
-  Key,
-  Loader2,
-  Mail,
-  Send,
-  X
+    AlertCircle,
+    CheckCircle,
+    Eye,
+    EyeOff,
+    Key,
+    Loader2,
+    Mail,
+    Send,
+    X
 } from 'lucide-react';
 import React, { useState } from 'react';
 import { toast } from 'sonner';
@@ -465,7 +465,7 @@ export function PasswordChangeModal({ isOpen, onClose }: PasswordChangeModalProp
                         <Mail className="w-12 h-12 mx-auto text-accent" />
                         <h3 className="font-medium">Forgot your password?</h3>
                         <p className="text-sm text-muted-foreground">
-                          Enter your email address and we'll send you a link to reset your password.
+                          Enter your email address and we&apos;ll send you a link to reset your password.
                         </p>
                       </div>
 
@@ -517,7 +517,7 @@ export function PasswordChangeModal({ isOpen, onClose }: PasswordChangeModalProp
                       <div>
                         <h3 className="font-medium">Email Sent!</h3>
                         <p className="text-sm text-muted-foreground mt-2">
-                          We've sent password reset instructions to <span className="font-medium text-accent">{resetEmail}</span>
+                          We&apos;ve sent password reset instructions to <span className="font-medium text-accent">{resetEmail}</span>
                         </p>
                         <p className="text-sm text-muted-foreground mt-2">
                           Check your inbox and follow the instructions to reset your password.

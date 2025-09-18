@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import {
-  Bell,
-  BookOpen,
-  Bot,
-  GraduationCap,
-  Settings,
-  User
+    Bell,
+    BookOpen,
+    Bot,
+    GraduationCap,
+    Settings,
+    User
 } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '../components/ui/button';

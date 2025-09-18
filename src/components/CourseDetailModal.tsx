@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  X, 
-  Play, 
-  Clock, 
-  Users, 
-  Award, 
+import { AnimatePresence, motion } from 'framer-motion';
+import {
   BookOpen,
   CheckCircle,
-  Star,
-  Calendar,
+  Clock,
+  Download,
   FileText,
-  Video,
   Headphones,
-  Download
+  Play,
+  Star,
+  Users,
+  Video,
+  X
 } from 'lucide-react';
+import { useState } from 'react';
+import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { Progress } from '../components/ui/progress';
-import { Badge } from '../components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import { Card, CardContent } from '../components/ui/card';
 import { Separator } from '../components/ui/separator';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { useEnrollment } from './EnrollmentProvider';
 
 interface CourseDetailModalProps {
@@ -235,7 +232,7 @@ export function CourseDetailModal({ isOpen, onClose, course }: CourseDetailModal
                     <Separator />
                     
                     <div>
-                      <h4 className="font-medium mb-2">What You'll Learn</h4>
+                      <h4 className="font-medium mb-2">What You&apos;ll Learn</h4>
                       <ul className="space-y-1 text-sm text-muted-foreground">
                         <li>• Machine learning fundamentals</li>
                         <li>• Supervised learning algorithms</li>
