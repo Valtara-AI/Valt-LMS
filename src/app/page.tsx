@@ -2,24 +2,25 @@
 
 import { motion } from 'framer-motion';
 import {
-    Award,
-    BookOpen,
-    Brain,
-    ChevronRight,
-    Clock,
-    Globe,
-    Play,
-    Shield,
-    Star,
-    TrendingUp,
-    Users,
-    Zap
+  Award,
+  BookOpen,
+  Brain,
+  ChevronRight,
+  Clock,
+  Globe,
+  Play,
+  Shield,
+  Star,
+  TrendingUp,
+  Users,
+  Zap
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
+import Logo from '../components/ui/Logo';
 import { useTheme } from '../components/useTheme';
 
 interface LandingPageProps {
@@ -206,10 +207,10 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-accent to-secondary flex items-center justify-center">
-                <BookOpen className="w-5 h-5 text-white" />
+              <div className="flex items-center gap-3">
+                <Logo width={40} height={40} />
+                <span className="text-xl font-bold gradient-text">Valt LMS</span>
               </div>
-              <span className="text-xl font-bold gradient-text">Valt LMS</span>
             </div>
             
             <div className="hidden md:flex items-center gap-8">

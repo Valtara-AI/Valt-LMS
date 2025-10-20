@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '../components/ui/button';
+import Logo from './ui/Logo';
 
 interface SidebarProps {
   activeSection: string;
@@ -43,9 +44,7 @@ export function Sidebar({ activeSection, onSectionChange, onLogout }: SidebarPro
             exit={{ opacity: 0 }}
             className="flex items-center gap-3"
           >
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-accent to-secondary flex items-center justify-center">
-              <span className="text-white font-bold">V</span>
-            </div>
+            <Logo width={40} height={40} />
             <span className="text-xl font-semibold gradient-text">Valt LMS</span>
           </motion.div>
         )}

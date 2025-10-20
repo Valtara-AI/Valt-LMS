@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  BookOpen, 
-  Mail, 
-  Lock, 
-  User, 
-  Eye, 
-  EyeOff, 
-  ArrowLeft,
-  Github,
-  Chrome,
-  Apple,
-  CheckCircle,
-  AlertCircle,
-  Loader2
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+    AlertCircle,
+    Apple,
+    ArrowLeft,
+    CheckCircle,
+    Chrome,
+    Eye,
+    EyeOff,
+    Github,
+    Loader2,
+    Lock,
+    Mail,
+    User
 } from 'lucide-react';
+import React, { useState } from 'react';
 import { Button } from '../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Separator } from '../components/ui/separator';
 import { ThemeToggle } from './ThemeToggle';
+import Logo from './ui/Logo';
 
 interface AuthPageProps {
   onLogin: () => void;
@@ -165,9 +165,7 @@ export function AuthPage({ onLogin, onBack, initialMode = 'login', isDarkMode, o
           </div>
 
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-accent to-secondary flex items-center justify-center">
-              <BookOpen className="w-6 h-6 text-white" />
-            </div>
+            <Logo width={48} height={48} />
             <span className="text-2xl font-bold gradient-text">Valt LMS</span>
           </div>
 
