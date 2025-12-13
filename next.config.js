@@ -3,12 +3,21 @@ const nextConfig = {
   typedRoutes: true,
   outputFileTracingRoot: __dirname,
   allowedDevOrigins: ['192.168.153.53'],
+  output: 'standalone',
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'lms.valtara.ai', '188.245.43.183'],
     remotePatterns: [
       {
         protocol: 'https',
         hostname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'lms.valtara.ai',
+      },
+      {
+        protocol: 'http',
+        hostname: '188.245.43.183',
       },
     ],
   },
