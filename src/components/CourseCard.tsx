@@ -16,6 +16,8 @@ interface CourseCardProps {
   onContinue?: () => void;
   onEnroll?: () => void;
   onClick?: () => void;
+  // Allow extra props from Course spread
+  [key: string]: unknown;
 }
 
 export function CourseCard({
@@ -30,7 +32,10 @@ export function CourseCard({
   onContinue,
   onEnroll,
   onClick,
+  // Capture and discard extra Course properties
+  ...rest
 }: CourseCardProps) {
+  void rest;
   const getLevelColor = (level: string) => {
     switch (level) {
       case 'Beginner': return 'bg-green-500/20 text-green-300';

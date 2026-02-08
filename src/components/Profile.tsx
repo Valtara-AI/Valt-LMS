@@ -302,7 +302,7 @@ export function Profile() {
               
               <div className="p-3 rounded-lg bg-muted/20 border border-muted/30">
                 <p className="text-sm">
-                  <strong>Today's Tip:</strong> Based on your progress, consider spending more time on interactive exercises to improve retention by 23%.
+                  <strong>Today&apos;s Tip:</strong> Based on your progress, consider spending more time on interactive exercises to improve retention by 23%.
                 </p>
               </div>
               

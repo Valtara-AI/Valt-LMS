@@ -94,7 +94,7 @@ export function AuthPage({ onLogin, onBack, initialMode = 'login', isDarkMode, o
     }, 2000);
   };
 
-  const handleSocialAuth = (provider: string) => {
+  const handleSocialAuth = (_provider: string) => {
     setIsLoading(true);
     // Simulate social auth
     setTimeout(() => {
@@ -370,7 +370,7 @@ export function AuthPage({ onLogin, onBack, initialMode = 'login', isDarkMode, o
                         </span>
                       </div>
                       <div className="flex gap-1">
-                        {[...Array(5)].map((_, i) => (
+                        {Array.from({ length: 5 }).map((_, i) => (
                           <div
                             key={i}
                             className={`h-2 flex-1 rounded-full transition-colors ${

@@ -31,7 +31,7 @@ interface EmailService {
 
 // Mock email service (in a real app, this would be API calls)
 const emailService: EmailService = {
-  sendPasswordResetEmail: async (email: string): Promise<boolean> => {
+  sendPasswordResetEmail: async (_email: string): Promise<boolean> => {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 2000));
     
@@ -51,7 +51,7 @@ const emailService: EmailService = {
     return password.length >= 6;
   },
 
-  changePassword: async (currentPassword: string, newPassword: string): Promise<boolean> => {
+  changePassword: async (_currentPassword: string, _newPassword: string): Promise<boolean> => {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 1500));
     
@@ -169,7 +169,7 @@ export function PasswordChangeModal({ isOpen, onClose }: PasswordChangeModalProp
         onClose();
       }, 1000);
 
-    } catch (error) {
+    } catch {
       toast.error('Failed to change password', {
         description: 'Please try again later or contact support if the problem persists.',
         duration: 4000,
@@ -209,7 +209,7 @@ export function PasswordChangeModal({ isOpen, onClose }: PasswordChangeModalProp
         duration: 6000,
       });
 
-    } catch (error) {
+    } catch {
       toast.error('Failed to send reset email', {
         description: 'Please check the email address and try again.',
         duration: 4000,

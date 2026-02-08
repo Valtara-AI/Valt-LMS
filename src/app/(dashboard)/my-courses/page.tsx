@@ -2,27 +2,13 @@
 
 import { CourseCard } from '@/components/CourseCard';
 import { CourseDetailModal } from '@/components/CourseDetailModal';
-import { useEnrollment } from '@/components/EnrollmentProvider';
+import { useEnrollment, type Course } from '@/components/EnrollmentProvider';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { motion } from 'framer-motion';
 import { Filter, Grid, List, Search } from 'lucide-react';
 import { useState } from 'react';
-
-type Course = {
-  title: string;
-  status: string;
-  progress: number;
-  instructor: string;
-  duration: string;
-  level: string;
-  students?: number;
-  description?: string;
-  skills?: string[];
-  isRecommended?: boolean;
-  [key: string]: any;
-};
 
 export default function MyCoursesPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');

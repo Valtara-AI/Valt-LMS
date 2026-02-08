@@ -42,7 +42,7 @@ interface EnrollmentProviderProps {
 export function EnrollmentProvider({ children }: EnrollmentProviderProps) {
   const [enrolledCourses, setEnrolledCourses] = useState<Course[]>([]);
   const [availableCourses, setAvailableCourses] = useState<Course[]>([]);
-  const [mounted, setMounted] = useState(false);
+  const [, setMounted] = useState(false);
 
   // Initialize data on component mount
   useEffect(() => {
@@ -52,7 +52,7 @@ export function EnrollmentProvider({ children }: EnrollmentProviderProps) {
     if (typeof window !== 'undefined') {
       const savedEnrolledCourses = localStorage.getItem('enrolled-courses');
       if (savedEnrolledCourses) {
-        setEnrolledCourses(JSON.parse(savedEnrolledCourses));
+        setEnrolledCourses(JSON.parse(savedEnrolledCourses) as Course[]);
       } else {
       // Default enrolled courses for demo
       const defaultEnrolled: Course[] = [

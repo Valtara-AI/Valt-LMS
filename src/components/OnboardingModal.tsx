@@ -99,7 +99,7 @@ export function OnboardingModal({ isOpen, onClose }: OnboardingModalProps) {
     const styleData = styleBasedRecommendations[learningStyle as keyof typeof styleBasedRecommendations];
     
     if (!roleData) {
-      return availableCourses.find(c => !isEnrolled(c.title)) || availableCourses[0];
+      return availableCourses.find(c => !isEnrolled(c.title)) ?? availableCourses[0];
     }
 
     // Try role-based recommendations first
@@ -127,7 +127,7 @@ export function OnboardingModal({ isOpen, onClose }: OnboardingModalProps) {
     }
 
     // Fallback to first available course
-    const fallbackCourse = availableCourses.find(c => !isEnrolled(c.title)) || availableCourses[0];
+    const fallbackCourse = availableCourses.find(c => !isEnrolled(c.title)) ?? availableCourses[0];
     return {
       ...fallbackCourse,
       recommendationReason: 'A great starting point for your learning journey'
@@ -175,7 +175,7 @@ export function OnboardingModal({ isOpen, onClose }: OnboardingModalProps) {
             <div className="flex justify-between items-center mb-8">
               <div>
                 <h2 className="text-3xl font-bold gradient-text">Welcome to Valt LMS</h2>
-                <p className="text-muted-foreground mt-2">Let's personalize your learning experience</p>
+                <p className="text-muted-foreground mt-2">Let&apos;s personalize your learning experience</p>
               </div>
               <Button variant="ghost" size="sm" onClick={onClose}>
                 <X className="w-5 h-5" />
@@ -211,7 +211,7 @@ export function OnboardingModal({ isOpen, onClose }: OnboardingModalProps) {
                   className="space-y-6"
                 >
                   <div className="text-center">
-                    <h3 className="text-xl font-semibold mb-2">What's your role?</h3>
+                    <h3 className="text-xl font-semibold mb-2">What&apos;s your role?</h3>
                     <p className="text-muted-foreground">Help us customize your experience</p>
                   </div>
                   
@@ -297,9 +297,9 @@ export function OnboardingModal({ isOpen, onClose }: OnboardingModalProps) {
                     <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-r from-accent to-secondary flex items-center justify-center">
                       <GraduationCap className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-2xl font-semibold">You're all set!</h3>
+                    <h3 className="text-2xl font-semibold">You&apos;re all set!</h3>
                     <p className="text-muted-foreground max-w-md mx-auto">
-                      Based on your preferences as a <span className="text-accent font-medium">{roles.find(r => r.id === userRole)?.label.toLowerCase()}</span> with <span className="text-accent font-medium">{learningStyles.find(s => s.id === learningStyle)?.label.toLowerCase()}</span> learning style, here's our top recommendation:
+                      Based on your preferences as a <span className="text-accent font-medium">{roles.find(r => r.id === userRole)?.label.toLowerCase()}</span> with <span className="text-accent font-medium">{learningStyles.find(s => s.id === learningStyle)?.label.toLowerCase()}</span> learning style, here&apos;s our top recommendation:
                     </p>
                   </div>
                   
@@ -318,7 +318,7 @@ export function OnboardingModal({ isOpen, onClose }: OnboardingModalProps) {
                               by {recommendedCourse?.instructor || 'Dr. Sarah Chen'}
                             </p>
                             <p className="text-sm text-muted-foreground mb-2">
-                              {recommendedCourse?.description || 'Perfect for your learning style with interactive visualizations and hands-on exercises.'}
+                              {recommendedCourse?.description ?? 'Perfect for your learning style with interactive visualizations and hands-on exercises.'}
                             </p>
                             
                             {recommendedCourse?.recommendationReason && (

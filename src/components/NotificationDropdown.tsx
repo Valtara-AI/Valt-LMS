@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { Bell, BookOpen, Award, MessageCircle, Calendar, Check, X } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '../components/ui/popover';
-import { Separator } from '../components/ui/separator';
+// Separator available if needed
+// import { Separator } from '../components/ui/separator';
 import { Badge } from '../components/ui/badge';
 
 export function NotificationDropdown() {

@@ -729,7 +729,7 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
           >
             <h2 className="text-4xl font-bold mb-4 text-foreground">What Our Learners Say</h2>
             <p className="text-xl text-muted-foreground">
-              Join thousands of successful learners who've transformed their careers
+              Join thousands of successful learners who&apos;ve transformed their careers
             </p>
           </motion.div>
 
@@ -746,13 +746,13 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
                 <Card className="glass-panel border-accent/20 h-full">
                   <CardContent className="p-8 space-y-6">
                     <div className="flex gap-1">
-                      {[...Array(testimonial.rating)].map((_, i) => (
+                      {Array.from({ length: testimonial.rating }).map((_, i) => (
                         <Star key={i} className="w-5 h-5 fill-warning text-warning" />
                       ))}
                     </div>
                     
                     <p className="text-muted-foreground leading-relaxed italic">
-                      "{testimonial.content}"
+                      &ldquo;{testimonial.content}&rdquo;
                     </p>
                     
                     <div className="flex items-center gap-4">

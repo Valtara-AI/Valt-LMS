@@ -95,7 +95,7 @@ export default function AuthPage() {
     router.push('/dashboard');
   };
 
-  const handleSocialLogin = async (provider: string) => {
+  const handleSocialLogin = async (_provider: string) => {
     setIsLoading(true);
     
     // Simulate social login

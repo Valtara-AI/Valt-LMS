@@ -37,7 +37,7 @@ interface SettingsModalProps {
   onLogout?: () => void;
 }
 
-export function SettingsModal({ isOpen, onClose, isDarkMode, onThemeToggle, onLogout }: SettingsModalProps) {
+export function SettingsModal({ isOpen, onClose, isDarkMode, onThemeToggle, onLogout: _onLogout }: SettingsModalProps) {
   const [fontSize, setFontSize] = useState([14]);
   const [animationSpeed, setAnimationSpeed] = useState([1]);
   const [emailNotifications, setEmailNotifications] = useState(true);
@@ -378,7 +378,7 @@ export function SettingsModal({ isOpen, onClose, isDarkMode, onThemeToggle, onLo
                           <div className="flex items-center justify-between">
                             <div className="space-y-1">
                               <Label>Show Online Status</Label>
-                              <p className="text-sm text-muted-foreground">Let others see when you're online</p>
+                              <p className="text-sm text-muted-foreground">Let others see when you&apos;re online</p>
                             </div>
                             <Switch />
                           </div>

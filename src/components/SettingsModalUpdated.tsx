@@ -386,7 +386,7 @@ export function SettingsModal({ isOpen, onClose, isDarkMode, onThemeToggle, onLo
                             <div className="flex items-center justify-between">
                               <div className="space-y-1">
                                 <Label>Show Online Status</Label>
-                                <p className="text-sm text-muted-foreground">Let others see when you're online</p>
+                                <p className="text-sm text-muted-foreground">Let others see when you&apos;re online</p>
                               </div>
                               <Switch />
                             </div>

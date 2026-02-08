@@ -49,6 +49,7 @@ export default function DashboardPage() {
   ];
 
   const handleNavigate = (section: string) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any
     router.push(`/${section}` as any);
   };
 

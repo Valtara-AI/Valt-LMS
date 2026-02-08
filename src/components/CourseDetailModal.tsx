@@ -18,28 +18,18 @@ import { Button } from '../components/ui/button';
 import { Progress } from '../components/ui/progress';
 import { Separator } from '../components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import { useEnrollment } from './EnrollmentProvider';
+import { useEnrollment, type Course } from './EnrollmentProvider';
 
 interface CourseDetailModalProps {
   isOpen: boolean;
   onClose: () => void;
-  course: {
-    title: string;
-    instructor: string;
-    duration: string;
-    level: string;
-    progress: number;
-    status: string;
-    students?: number;
-    description?: string;
-    skills?: string[];
-    isRecommended?: boolean;
-  } | null;
+  course: Course | null;
 }
 
 export function CourseDetailModal({ isOpen, onClose, course }: CourseDetailModalProps) {
   const [activeModule, setActiveModule] = useState(0);
-  const { enrollInCourse, isEnrolled, updateCourseProgress } = useEnrollment();
+  // Enrollment hooks available if needed
+  // const { enrollInCourse, isEnrolled, updateCourseProgress } = useEnrollment();
 
   if (!course) return null;
 

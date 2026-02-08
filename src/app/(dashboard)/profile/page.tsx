@@ -4,14 +4,10 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   User, 
-  Mail, 
   GraduationCap, 
-  Settings, 
   Bell, 
   Eye, 
-  Volume2, 
   BookOpen, 
-  Clock,
   Bot
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -20,7 +16,7 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Slider } from '@/components/ui/slider';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+// RadioGroup/RadioGroupItem available if needed
 import { Progress } from '@/components/ui/progress';
 import { AIChatModal } from '@/components/AIChatModal';
 

@@ -14,7 +14,7 @@ import {
   Pie,
   Cell
 } from 'recharts';
-import { TrendingUp, Target, Clock, Brain } from 'lucide-react';
+import { TrendingUp, Clock, Brain } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
