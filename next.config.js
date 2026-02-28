@@ -5,7 +5,7 @@ const nextConfig = {
   allowedDevOrigins: ['192.168.153.53'],
   output: 'standalone',
   images: {
-    domains: ['localhost', 'lms.valtara.ai', '188.245.43.183'],
+    domains: ['localhost', 'lms.valtara.ai', '89.167.41.237'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -17,7 +17,7 @@ const nextConfig = {
       },
       {
         protocol: 'http',
-        hostname: '188.245.43.183',
+        hostname: '89.167.41.237',
       },
     ],
   },
