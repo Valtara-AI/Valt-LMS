@@ -85,7 +85,7 @@ export function LandingPage({ onGetStarted, onLogin, isDarkMode, onThemeToggle }
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div id="main" className="min-h-screen bg-background">
       {/* Navigation */}
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
@@ -99,12 +99,10 @@ export function LandingPage({ onGetStarted, onLogin, isDarkMode, onThemeToggle }
               <Logo width={40} height={40} />
               <span className="text-xl font-bold gradient-text">Valt LMS</span>
             </div>
-            
+
             <div className="hidden md:flex items-center gap-8">
               <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">Features</a>
-              <a href="#courses" className="text-muted-foreground hover:text-foreground transition-colors">Courses</a>
               <a href="#testimonials" className="text-muted-foreground hover:text-foreground transition-colors">Reviews</a>
-              <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
             </div>
 
             <div className="flex items-center gap-3">
@@ -136,12 +134,12 @@ export function LandingPage({ onGetStarted, onLogin, isDarkMode, onThemeToggle }
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-8"
+              className="space-y-8 min-w-0"
             >
               <div className="space-y-4">
                 <motion.div
@@ -151,22 +149,22 @@ export function LandingPage({ onGetStarted, onLogin, isDarkMode, onThemeToggle }
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 text-accent border border-accent/30"
                 >
                   <Zap className="w-4 h-4" />
-                  <span className="text-sm font-medium">AI-Powered Learning Platform</span>
+                  <span className="text-sm font-medium">Course tracking + AI study assistant</span>
                 </motion.div>
-                
+
                 <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                  Master New Skills with{' '}
-                  <span className="gradient-text">Intelligent Learning</span>
+                  Track every course.{' '}
+                  <span className="gradient-text">Actually finish them.</span>
                 </h1>
-                
+
                 <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                  Experience personalized education powered by AI. Track progress, collaborate with peers, 
-                  and achieve your learning goals faster than ever before.
+                  Valt LMS shows real progress on every course you enroll in, an AI assistant
+                  tells you what to study next, and you get a certificate the moment you complete one.
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
+                <Button
                   size="lg"
                   onClick={onGetStarted}
                   className="gradient-button text-lg px-8 py-4 h-auto"
@@ -174,18 +172,19 @@ export function LandingPage({ onGetStarted, onLogin, isDarkMode, onThemeToggle }
                   Start Learning Free
                   <ChevronRight className="w-5 h-5 ml-2" />
                 </Button>
-                
-                <Button 
-                  size="lg" 
+
+                <Button
+                  size="lg"
                   variant="outline"
                   className="text-lg px-8 py-4 h-auto border-accent/30 hover:bg-accent/10"
+                  onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   <Play className="w-5 h-5 mr-2" />
                   Watch Demo
                 </Button>
               </div>
 
-              <div className="flex items-center gap-8 pt-4">
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-4 pt-4">
                 {stats.map((stat, index) => (
                   <motion.div
                     key={stat.label}
@@ -205,7 +204,7 @@ export function LandingPage({ onGetStarted, onLogin, isDarkMode, onThemeToggle }
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative"
+              className="relative min-w-0"
             >
               <div className="relative z-10">
                 <Card className="glass-panel border-accent/30 p-8 shadow-2xl">
@@ -282,10 +281,10 @@ export function LandingPage({ onGetStarted, onLogin, isDarkMode, onThemeToggle }
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4">Why Choose Valt LMS?</h2>
+            <h2 className="text-4xl font-bold mb-4">What you get when you enroll</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our platform combines cutting-edge technology with proven learning methodologies 
-              to deliver an unparalleled educational experience.
+              No vague promises — here&apos;s exactly what happens: tracked progress on every course,
+              an AI assistant that tells you what&apos;s next, and a certificate when you finish.
             </p>
           </motion.div>
 
@@ -386,9 +385,9 @@ export function LandingPage({ onGetStarted, onLogin, isDarkMode, onThemeToggle }
             className="text-center space-y-8"
           >
             <div className="space-y-4">
-              <h2 className="text-4xl font-bold">Ready to Start Your Learning Journey?</h2>
+              <h2 className="text-4xl font-bold">Start a course. Watch your progress add up.</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Join millions of learners worldwide and unlock your potential with AI-powered education.
+                Sign up free, enroll in a course, and track completion in real time — no credit card required.
               </p>
             </div>
 
@@ -440,7 +439,7 @@ export function LandingPage({ onGetStarted, onLogin, isDarkMode, onThemeToggle }
                 <BookOpen className="w-4 h-4 text-white" />
               </div>
               <span className="font-semibold gradient-text">Valt LMS</span>
-              <span className="text-muted-foreground">© 2025 All rights reserved</span>
+              <span className="text-muted-foreground">© 2026 All rights reserved</span>
             </div>
           </div>
         </div>

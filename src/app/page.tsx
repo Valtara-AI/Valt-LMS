@@ -196,7 +196,7 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div id="main" className="min-h-screen bg-background">
       {/* Navigation */}
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
@@ -212,12 +212,11 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
                 <span className="text-xl font-bold gradient-text">Valt LMS</span>
               </div>
             </div>
-            
+
             <div className="hidden md:flex items-center gap-8">
               <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">Features</a>
               <a href="#courses" className="text-muted-foreground hover:text-foreground transition-colors">Courses</a>
               <a href="#testimonials" className="text-muted-foreground hover:text-foreground transition-colors">Reviews</a>
-              <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
             </div>
 
             <div className="flex items-center gap-3">
@@ -253,12 +252,12 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
         </div>
         
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-8"
+              className="space-y-8 min-w-0"
             >
               <div className="space-y-6">
                 <motion.div
@@ -273,18 +272,18 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
                   >
                       <Zap className="w-4 h-4 text-accent" />
                   </motion.div>
-                    <span className="text-sm font-medium text-foreground/90 dark:text-foreground">🚀 Next-Gen AI Learning Platform</span>
+                    <span className="text-sm font-medium text-foreground/90 dark:text-foreground">Course tracking + AI study assistant</span>
                 </motion.div>
-                
+
                 <motion.h1
                   initial={{ y: 26, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.9, delay: 0.6 }}
                   className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-snug text-foreground max-w-2xl"
                 >
-                  <span className="block">Transform Your Future with</span>
+                  <span className="block">Track every course.</span>
                   <span className="block mt-2 relative">
-                    <span className="gradient-text">Smart Learning</span>
+                    <span className="gradient-text">Actually finish them.</span>
                     <motion.div
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
@@ -293,15 +292,15 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
                     />
                   </span>
                 </motion.h1>
-                
+
                 <motion.p
                   initial={{ y: 18, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.9, delay: 0.85 }}
                   className="text-lg md:text-xl text-foreground leading-snug max-w-xl mt-4"
                 >
-                  Join <span className="text-accent font-semibold text-foreground/90">50,000+</span> learners mastering skills with AI-powered personalization.
-                  <span className="block mt-2 text-foreground/90">Build your career, one lesson at a time. 🎯</span>
+                  Valt LMS tracks real progress on every course you enroll in.
+                  <span className="block mt-2 text-foreground/90">An AI assistant tells you what to study next, and you get a certificate the moment you finish.</span>
                 </motion.p>
               </div>
 
@@ -329,10 +328,11 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     variant="outline"
                     className="text-lg px-10 py-5 h-auto border-2 border-accent/50 hover:bg-accent/10 hover:border-accent transition-all duration-300"
+                    onClick={() => document.getElementById('courses')?.scrollIntoView({ behavior: 'smooth' })}
                   >
                     <Play className="w-5 h-5 mr-2" />
                     Watch Demo
@@ -340,11 +340,11 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
                 </motion.div>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 1.2 }}
-                className="flex items-center gap-8 pt-6"
+                className="flex flex-wrap items-center gap-x-8 gap-y-4 pt-6"
               >
                 {stats.map((stat, index) => (
                   <motion.div
@@ -391,7 +391,7 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative lg:pl-8"
+              className="relative lg:pl-8 min-w-0"
             >
               {/* Learning Dashboard Preview */}
               <motion.div
@@ -524,10 +524,10 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-foreground">Why Choose Valt LMS?</h2>
+            <h2 className="text-4xl font-bold mb-4 text-foreground">What you get when you enroll</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our platform combines cutting-edge technology with proven learning methodologies 
-              to deliver an unparalleled educational experience.
+              No vague promises — here&apos;s exactly what happens: tracked progress on every course,
+              an AI assistant that tells you what&apos;s next, and a certificate when you finish.
             </p>
           </motion.div>
 
@@ -572,9 +572,10 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-foreground">Explore Our Courses</h2>
+            <h2 className="text-4xl font-bold mb-4 text-foreground">Browse courses by category</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Discover a wide range of expertly crafted courses designed to help you master new skills and advance your career.
+              Filter by Technology, Design, Business, Data Science, or Marketing. Every listing shows
+              the instructor, duration, level, and skills covered before you enroll.
             </p>
           </motion.div>
 
@@ -691,7 +692,7 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
                         <span className="text-lg font-bold text-foreground">{course.price}</span>
                         <span className="text-sm text-muted-foreground line-through">{course.originalPrice}</span>
                       </div>
-                      <Button size="sm" className="gradient-button">
+                      <Button size="sm" className="gradient-button" onClick={onGetStarted}>
                         Enroll Now
                       </Button>
                     </div>
@@ -709,7 +710,12 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
             viewport={{ once: true }}
             className="text-center mt-12"
           >
-            <Button size="lg" variant="outline" className="border-accent/30 hover:bg-accent/10 text-foreground">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-accent/30 hover:bg-accent/10 text-foreground"
+              onClick={() => setSelectedCategory('All Courses')}
+            >
               <BookOpen className="w-5 h-5 mr-2" />
               View All Courses
             </Button>
@@ -783,9 +789,9 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
             className="text-center space-y-8"
           >
             <div className="space-y-4">
-              <h2 className="text-4xl font-bold text-foreground">Ready to Start Your Learning Journey?</h2>
+              <h2 className="text-4xl font-bold text-foreground">Start a course. Watch your progress add up.</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Join millions of learners worldwide and unlock your potential with AI-powered education.
+                Sign up free, enroll in a course, and track completion in real time — no credit card required.
               </p>
             </div>
 
@@ -837,7 +843,7 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
                 <BookOpen className="w-4 h-4 text-white" />
               </div>
               <span className="font-semibold gradient-text">Valt LMS</span>
-              <span className="text-muted-foreground">© 2025 All rights reserved</span>
+              <span className="text-muted-foreground">© 2026 All rights reserved</span>
             </div>
           </div>
         </div>
