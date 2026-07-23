@@ -165,33 +165,27 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
   ];
 
   const stats = [
-    { value: '50K+', label: 'Active Learners' },
-    { value: '1,200+', label: 'Expert Courses' },
-    { value: '98%', label: 'Success Rate' },
+    { value: '5', label: 'Course Categories' },
+    { value: '4', label: 'Dashboard Metrics Tracked' },
+    { value: '🎓', label: 'Certificate on Completion' },
     { value: '24/7', label: 'AI Support' }
   ];
 
-  const testimonials = [
+  const learnerPersonas = [
     {
-      name: 'Sarah Chen',
-      role: 'Software Engineer at Google',
-      content: 'This platform transformed my career. The AI-powered recommendations helped me focus on exactly what I needed to learn.',
-      avatar: 'SC',
-      rating: 5
+      icon: BookOpen,
+      title: 'Juggling multiple courses at once',
+      description: 'Your dashboard tracks progress on every course you enroll in separately, so nothing gets lost in the shuffle.'
     },
     {
-      name: 'Marcus Johnson',
-      role: 'Data Scientist at Meta',
-      content: 'The interactive courses and real-world projects made complex topics accessible. Highly recommend!',
-      avatar: 'MJ',
-      rating: 5
+      icon: TrendingUp,
+      title: 'Wants direction, not just content',
+      description: "The AI assistant recommends what to study next, helps you set learning goals, and answers questions about your progress."
     },
     {
-      name: 'Elena Rodriguez',
-      role: 'UX Designer at Adobe',
-      content: 'The collaborative features and peer learning made all the difference in my learning journey.',
-      avatar: 'ER',
-      rating: 5
+      icon: Award,
+      title: 'Wants proof when you finish',
+      description: 'Complete a course and your certificate is ready immediately — no separate request, no waiting.'
     }
   ];
 
@@ -365,25 +359,6 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
                     </div>
                   </motion.div>
                 ))}
-              </motion.div>
-
-              {/* Social proof */}
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 1.6 }}
-                className="flex items-center gap-4 pt-4"
-              >
-                <div className="flex -space-x-2">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-accent to-secondary border-2 border-background flex items-center justify-center text-white text-xs font-bold">
-                      {String.fromCharCode(64 + i)}
-                    </div>
-                  ))}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  <span className="text-foreground font-semibold">2,847</span> students joined this week
-                </div>
               </motion.div>
             </motion.div>
 
@@ -733,16 +708,16 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-foreground">What Our Learners Say</h2>
+            <h2 className="text-4xl font-bold mb-4 text-foreground">Built For How You Actually Learn</h2>
             <p className="text-xl text-muted-foreground">
-              Join thousands of successful learners who&apos;ve transformed their careers
+              No borrowed reviews — just what the product does for you
             </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {learnerPersonas.map((persona, index) => (
               <motion.div
-                key={testimonial.name}
+                key={persona.title}
                 initial={{ y: 50, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
@@ -751,24 +726,13 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
               >
                 <Card className="glass-panel border-accent/20 h-full">
                   <CardContent className="p-8 space-y-6">
-                    <div className="flex gap-1">
-                      {Array.from({ length: testimonial.rating }).map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-warning text-warning" />
-                      ))}
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center">
+                      <persona.icon className="w-6 h-6 text-white" />
                     </div>
-                    
-                    <p className="text-muted-foreground leading-relaxed italic">
-                      &ldquo;{testimonial.content}&rdquo;
-                    </p>
-                    
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center font-semibold text-white">
-                        {testimonial.avatar}
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
-                        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                      </div>
+
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-2">{persona.title}</h4>
+                      <p className="text-muted-foreground leading-relaxed">{persona.description}</p>
                     </div>
                   </CardContent>
                 </Card>
