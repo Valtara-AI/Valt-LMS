@@ -807,7 +807,7 @@ function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
                 <BookOpen className="w-4 h-4 text-white" />
               </div>
               <span className="font-semibold gradient-text">Valt LMS</span>
-              <span className="text-muted-foreground">© 2026 All rights reserved</span>
+              <span className="text-muted-foreground">© 2026 Valtara Inc. All rights reserved</span>
             </div>
           </div>
         </div>
